@@ -5,6 +5,9 @@ entry_file = open("./data/day-4.dat","r")
 entries = entry_file.readlines()
 entry_count = len(entries)
 
+
+# Part 1
+
 valid_passports = 0
 current_passport = 1
 
@@ -123,4 +126,3 @@ for i in range(0, entry_count):
             keys[key] = True
 
 print("Valid Passports: " + str(valid_passports))
-
