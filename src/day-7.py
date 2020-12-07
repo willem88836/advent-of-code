@@ -1,5 +1,5 @@
 
-# Advent of Code day 6
+# Advent of Code day 7
 
 entry_file = open("./data/day-7.dat","r")
 entries = entry_file.readlines()
@@ -65,7 +65,6 @@ for key, value in flags.items():
         count += 1
 
 print("Total: " + str(count))
-
 
 
 # Part 2
