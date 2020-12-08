@@ -20,7 +20,6 @@ for i in range(0, entry_count):
         valid = valid_fields == 8 or (valid_fields == 7 and not keys["cid"])
         if valid: 
             valid_passports += 1
-        print(str(current_passport) + " (" + str(valid_fields) + " - " + str(valid) + ") " + str(keys))
         
         keys = dict({"byr": False, "iyr": False, "eyr": False, "hgt": False, "hcl": False, "ecl": False, "pid": False, "cid": False})
         valid_fields = 0
@@ -102,7 +101,6 @@ for i in range(0, entry_count):
         valid = valid_fields == 8 or (valid_fields == 7 and not keys["cid"])
         if valid: 
             valid_passports += 1
-        print(str(current_passport) + " (" + str(valid_fields) + " - " + str(valid) + ") " + str(keys))
         
         keys = dict({"byr": False, "iyr": False, "eyr": False, "hgt": False, "hcl": False, "ecl": False, "pid": False, "cid": False})
         valid_fields = 0

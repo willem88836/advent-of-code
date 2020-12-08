@@ -23,7 +23,7 @@ for i in range(0, entry_count):
                 checked[e] = True
                 sum += 1
 
-print("Total: " + str(sum))
+print("Total Yes: " + str(sum))
 
 
 # Part 2
@@ -47,4 +47,4 @@ for i in range(0, entry_count):
             e = ord(entry[j]) - 97
             checked[e] += 1
 
-print("Total: " + str(sum))
+print("Total Everyone Yes: " + str(sum))

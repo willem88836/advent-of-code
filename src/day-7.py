@@ -64,7 +64,7 @@ for key, value in flags.items():
     if value == 1: 
         count += 1
 
-print("Total: " + str(count))
+print("Total Bags: " + str(count))
 
 
 # Part 2
@@ -80,4 +80,4 @@ def innerBagCount(key):
     return count
 
 count = innerBagCount(search_key)
-print("Total: " + str(count))
+print("Total Bags: " + str(count))
