@@ -44,7 +44,7 @@ entry_count = (entry_count + 2)
 entry_list = [0] * entry_count
 for i in range(0, len(sorted_list)): 
     entry_list[i + 1] = sorted_list[i]
-entry_list[len(entry_list) - 1] = max(sorted_list) + joltage_range
+entry_list[len(entry_list) - 1] = sorted_list[len(sorted_list) - 1] + joltage_range
 
 options = [0] * entry_count
 options[entry_count - 1] = 1
