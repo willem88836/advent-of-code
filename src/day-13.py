@@ -43,18 +43,45 @@ for i in range(0, len(busses)):
 
 print(str(bus_arrival))
 
-a = 1
-b = 0
-for i in range(0, len(bus_arrival)): 
-    x = bus_arrival[i][0]
-    y = bus_arrival[i][1]
+def my_func(a_k, a_r, b_i): 
+    global bus_arrival
+    b_k = bus_arrival[b_i][0]
+    b_r = bus_arrival[b_i][1]
+    lcm = a_k * b_k
 
-    a = a * x 
-    b = a * y + b 
+    print(str(range(a_k + a_r, lcm, a_k)))
 
-    print(str(i) + "]: " + str(a) + ", " + str(b))
+    for i in range(a_k + a_r, lcm, a_k): 
+        if i % b_k == b_r: 
+            print(i)
+            if b_i == len(bus_arrival) - 1: 
+                return i
+            else:
+                return my_func(i, 0, b_i + 1)
+    
+    print("idk what happened.")
 
-print(str(a + b))
+q = my_func(bus_arrival[0][0], bus_arrival[0][1], 1)
+
+print(q)
+
+
+
+
+
+
+# a = 1
+# b = 0
+# for i in range(0, len(bus_arrival)): 
+#     x = bus_arrival[i][0]
+#     y = bus_arrival[i][1]
+
+#     a = a * x 
+#     b = a * y + b 
+
+#     print(str(i) + "]: " + str(a) + ", " + str(b))
+
+# print(str(a + b))
 
 
 # print(str(bus_arrival))
