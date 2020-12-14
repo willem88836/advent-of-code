@@ -34,36 +34,36 @@ print("Best Line times delay: " + str(best_line * line_wait_time))
 
 # Part 2
 
-bus_arrival = []
+# bus_arrival = []
 
-for i in range(0, len(busses)): 
-    entry = busses[i]
-    if (entry != "x"): 
-        bus_arrival.append([int(entry), i])
+# for i in range(0, len(busses)): 
+#     entry = busses[i]
+#     if (entry != "x"): 
+#         bus_arrival.append([int(entry), i])
 
-print(str(bus_arrival))
+# print(str(bus_arrival))
 
-def my_func(a_k, a_r, b_i): 
-    global bus_arrival
-    b_k = bus_arrival[b_i][0]
-    b_r = bus_arrival[b_i][1]
-    lcm = a_k * b_k
+# def my_func(a_k, a_r, b_i): 
+#     global bus_arrival
+#     b_k = bus_arrival[b_i][0]
+#     b_r = bus_arrival[b_i][1]
+#     lcm = a_k * b_k
 
-    print(str(range(a_k + a_r, lcm, a_k)))
+#     print(str(range(a_k + a_r, lcm, a_k)))
 
-    for i in range(a_k + a_r, lcm, a_k): 
-        if i % b_k == b_r: 
-            print(i)
-            if b_i == len(bus_arrival) - 1: 
-                return i
-            else:
-                return my_func(i, 0, b_i + 1)
+#     for i in range(a_k + a_r, lcm, a_k): 
+#         if i % b_k == b_r: 
+#             print(i)
+#             if b_i == len(bus_arrival) - 1: 
+#                 return i
+#             else:
+#                 return my_func(i, 0, b_i + 1)
     
-    print("idk what happened.")
+#     print("idk what happened.")
 
-q = my_func(bus_arrival[0][0], bus_arrival[0][1], 1)
+# q = my_func(bus_arrival[0][0], bus_arrival[0][1], 1)
 
-print(q)
+# print(q)
 
 
 
