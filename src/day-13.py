@@ -2,6 +2,7 @@
 # Advent of Code day 12
 
 import math
+import threading
 
 entry_file = open("./data/day-13.dat","r")
 entries = entry_file.readlines()
@@ -32,104 +33,57 @@ for i in range(0, len(busses)):
 print("Best Line times delay: " + str(best_line * line_wait_time))
 
 
+
 # Part 2
 
-# bus_arrival = []
+class pathFinder(threading.Thread): 
+    i = 0
+    k = 0
+    busses = None
 
-# for i in range(0, len(busses)): 
-#     entry = busses[i]
-#     if (entry != "x"): 
-#         bus_arrival.append([int(entry), i])
+    def __init__(self, i, k, busses): 
+        threading.Thread.__init__(self)
+        self.i = i 
+        self.k = k
+        self.busses = busses
+        print("thread (" + str(i) + ", " + str(k) + ") started")
 
-# print(str(bus_arrival))
+    def run(self): 
+        j = i
 
-# def my_func(a_k, a_r, b_i): 
-#     global bus_arrival
-#     b_k = bus_arrival[b_i][0]
-#     b_r = bus_arrival[b_i][1]
-#     lcm = a_k * b_k
+        searching = True
 
-#     print(str(range(a_k + a_r, lcm, a_k)))
+        while searching: 
+            j += k
+            
+            valid = True
 
-#     for i in range(a_k + a_r, lcm, a_k): 
-#         if i % b_k == b_r: 
-#             print(i)
-#             if b_i == len(bus_arrival) - 1: 
-#                 return i
-#             else:
-#                 return my_func(i, 0, b_i + 1)
-    
-#     print("idk what happened.")
+            for l in range(0, len(self.busses)): 
+                entry = self.busses[l]
+                d = entry[0]    
+                r = entry[1]
 
-# q = my_func(bus_arrival[0][0], bus_arrival[0][1], 1)
-
-# print(q)
-
-
-
-
-
-
-# a = 1
-# b = 0
-# for i in range(0, len(bus_arrival)): 
-#     x = bus_arrival[i][0]
-#     y = bus_arrival[i][1]
-
-#     a = a * x 
-#     b = a * y + b 
-
-#     print(str(i) + "]: " + str(a) + ", " + str(b))
-
-# print(str(a + b))
-
-
-# print(str(bus_arrival))
+                if (j + r) % d != 0: 
+                    valid = False
+                    break
+            if valid: 
+                searching = False
+        
+        print(j)
 
 
 
 
+bus_arrival = []
 
-# g = 1.0
-# for p in range(0, len(bus_arrival)): 
-#     g *= bus_arrival[p][0]
-
-# for i in range(0, len(bus_arrival)): 
-#     print(str(g % bus_arrival[i][0]))
-
+for i in range(0, len(busses)): 
+    entry = busses[i]
+    if (entry != "x"): 
+        bus_arrival.append([int(entry), i])
 
 
-
-# for i in range(1, 10000000): 
-#     k = i * g
-#     is_sequence = True
-#     for j in range(0, len(bus_arrival)): 
-#         if k % bus_arrival[j][0] != bus_arrival[j][1]: 
-#             is_sequence = False
-#             break
-#     if is_sequence: 
-#         break
-# print ("k: " + str(k))
-# print("i: " + str(i))
-
-
-
-
-# print("g: " + str(g))
-# x = 0.0
-# for k in range(0, len(bus_arrival)): 
-#     m = bus_arrival[k][0]
-#     a = bus_arrival[k][1]
-
-#     b = g / m
-#     c = (1 / b) % m
-#     x += (a * b * c) % g
-
-#     print("m: " + str(m) + ", a: " + str(a) + ", b: " + str(b) + ", c: " + str(c))
-
-# print("x: " + str(x))
-
-# for k in range(0, len(bus_arrival)): 
-#     q = x % bus_arrival[k][0]
-#     print(str(q))
+k = 8
+for i in range(0, k): 
+    finder = pathFinder(i, k, bus_arrival)
+    finder.start()
 
